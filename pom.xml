@@ -13,6 +13,7 @@
     	<module>deploy-service</module>
     	<module>deploy-dao</module>
     	<module>deploy-domain</module>
+    	<module>deploy-compile</module>
   	</modules>
   	<build>
 	  	<plugins>
