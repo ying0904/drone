@@ -17,10 +17,22 @@
     	<dependency>
       		<groupId>junit</groupId>
       		<artifactId>junit</artifactId>
-      		<version>3.8.1</version>
+      		<version>4.11</version>
       		<scope>test</scope>
-    		</dependency>
-  		</dependencies>
+    	</dependency>
+    	<dependency>
+    		<groupId>gome.cloud</groupId>
+    		<artifactId>deploy-service</artifactId>
+    		<version>0.0.1-SNAPSHOT</version>
+    	</dependency>
+    	
+    	<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+  	</dependencies>
   	<build>
     	<finalName>deploy-web</finalName>
   	</build>

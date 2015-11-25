@@ -22,7 +22,8 @@
 		<!-- 超时时间 -->
 		<setting name="defaultStatementTimeout" value="25000"/>
 	</settings>
-<!-- 	<mappers> -->
+	<mappers>
+		<mapper resource="mybatis/app.xml"/>
 <!-- 		<mapper resource="sqlmap/app/application.xml"/> -->
 <!-- 		<mapper resource="sqlmap/app/application_member.xml"/> -->
 <!-- 		<mapper resource="sqlmap/app/application_resource.xml"/> -->
@@ -37,5 +38,5 @@
 <!-- 		<mapper resource="sqlmap/auth/user.xml"/> -->
 		
 <!-- 		<mapper resource="sqlmap/common/dictionary.xml"/> -->
-<!-- 	</mappers> -->
+	</mappers>
 </configuration>
