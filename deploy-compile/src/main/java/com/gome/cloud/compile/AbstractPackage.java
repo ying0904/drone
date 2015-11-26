@@ -34,13 +34,13 @@ public abstract class AbstractPackage implements Package {
 			pb.setCompileTestPath(createWorksapce(compilePath, pb.getTaskId(), TEST));
 			if(!isLinux()) {
 				p = Runtime.getRuntime().exec(
-				        "cmd /c cd " + pb.getAppPath()
+				        "cmd /c cd " + pb.getSourcePath()
 				        + "&&call mvn clean -U install " + getProfileId (pb.getProductPid()) + " -Dmaven.test.skip=true"
 				        + "&&rd /s /q " + pb.getCompileBuildPath()
 				        + "&&md " + pb.getCompileBuildPath()
 				        + "&&echo copy the file"
 				        + "&&xcopy " + pb.getTargetPath() + " " + pb.getCompileBuildPath() + " /e /y"
-				        + "&&cd " + pb.getAppPath()
+				        + "&&cd " + pb.getSourcePath()
 				        + "&&call mvn clean -U install " + getProfileId (pb.getTestPid()) + " -Dmaven.test.skip=true"
 				        + "&&rd /s /q " + pb.getCompileTestPath()
 				        + "&&md " + pb.getCompileTestPath()
@@ -49,12 +49,12 @@ public abstract class AbstractPackage implements Package {
 				        );
 			} else {
 				p = Runtime.getRuntime().exec(  
-				        "cd " + pb.getAppPath()  
+				        "cd " + pb.getSourcePath()  
 				        + ";mvn clean -U package -Dtest -DfailIfNoTests=false -P" + getProfileId (pb.getTestPid())  
 				        + ";rm -rf " + pb.getCompileTestPath()  
 				        + ";mkdir -p " + pb.getCompileTestPath()  
 				        + ";cp -rf " + pb.getTargetPath() + File.separator + "* "+ pb.getCompileTestPath()  
-				        + ";cd " + pb.getAppPath() 
+				        + ";cd " + pb.getSourcePath() 
 				        + ";mvn clean -U package -Dtest -DfailIfNoTests=false -P" + getProfileId (pb.getProductPid())  
 				        + ";rm -rf " + pb.getCompileBuildPath()  
 				        + ";mkdir -p " + pb.getCompileBuildPath()  
@@ -62,7 +62,7 @@ public abstract class AbstractPackage implements Package {
 				        );
 			}
 			in = p.getInputStream();
-			pb.setLogPath(writeLog(in, pb.getTaskId()));
+			pb.setLogPath(writeLog(in, pb));
 		} catch (Exception e) {  
 			e.printStackTrace();  
 		} finally {  
@@ -117,7 +117,7 @@ public abstract class AbstractPackage implements Package {
 		if (!sourceFile.exists()) {
 			sourceFile.mkdirs();
 		}
-		File sourcefile2 = new File(sourceCodeBasePath + "\\" + path);
+		File sourcefile2 = new File(sourceCodeBasePath + File.separator + path);
 		if (!sourcefile2.exists()) {
 			sourcefile2.mkdirs();
 		}
@@ -148,9 +148,10 @@ public abstract class AbstractPackage implements Package {
 		return file.getAbsolutePath();
 	}
 	
-	public String writeLog(InputStream in, String taskId) {
-		String dirLog = createWorksapce(logPath, taskId, "");
-		File file = new File(dirLog + File.separator + "compile.log");
+	public String writeLog(InputStream in, PackageBean pb) {
+//		String dirLog = createWorksapce(logPath, taskId, "");
+//		File file = new File(dirLog + File.separator + "compile.log");
+		File file = new File(pb.getLogPath());
 		BufferedReader br = null;
 		FileWriter writer = null;
 		try {

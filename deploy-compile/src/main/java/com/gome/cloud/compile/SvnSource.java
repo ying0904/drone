@@ -28,8 +28,6 @@ import org.tmatesoft.svn.core.wc.SVNRevision;
 import org.tmatesoft.svn.core.wc.SVNUpdateClient;
 import org.tmatesoft.svn.core.wc.SVNWCUtil;
 
-import com.gome.cloud.compile.util.SVNUtil;
-
 /**
  * @author blaiu
  *
@@ -105,10 +103,11 @@ public class SvnSource extends AbstractPackage {
 		}
 		pb.setAppName(getPrjectName(pb.getAppPath()));
 		pb.setCheckoutAppName(getPrjectName(pb.getUrl()));
-		pb.setSourcePath(getWorksapce(SVN + File.separator + pb.getUser() + File.separator + pb.getDomain()).getAbsolutePath());
+		pb.setSourcePath(getWorksapce(SVN + File.separator + pb.getUser() + File.separator + pb.getDomain() + File.separator + pb.getCheckoutAppName()).getAbsolutePath());
+		pb.setTargetPath(pb.getSourcePath() + File.separator + pb.getAppName() + File.separator + "target");
 		
 		SVNURL repositoryURL = SVNURL.parseURIEncoded(pb.getUrl());
-		File ws = new File(pb.getSourcePath(), pb.getCheckoutAppName());
+		File ws = new File(pb.getSourcePath());
 		
 		long lastVersion = update(clientManager, repositoryURL, SVNRevision.HEAD, ws, SVNDepth.INFINITY);
 		pb.setLastVersion(lastVersion + "");

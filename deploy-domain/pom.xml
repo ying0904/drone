@@ -108,20 +108,20 @@
   			<artifactId>commons-collections</artifactId>
   			<version>3.2.1</version>
         </dependency>
-        <dependency>
-			<groupId>com.gome.ds</groupId>
-			<artifactId>amqp</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.gome.ds</groupId>
-			<artifactId>jackson</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.gome.ds</groupId>
-			<artifactId>protoss-commons</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+<!--         <dependency> -->
+<!-- 			<groupId>com.gome.ds</groupId> -->
+<!-- 			<artifactId>amqp</artifactId> -->
+<!-- 			<version>0.0.1-SNAPSHOT</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.gome.ds</groupId> -->
+<!-- 			<artifactId>jackson</artifactId> -->
+<!-- 			<version>0.0.1-SNAPSHOT</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.gome.ds</groupId> -->
+<!-- 			<artifactId>protoss-commons</artifactId> -->
+<!-- 			<version>0.0.1-SNAPSHOT</version> -->
+<!-- 		</dependency> -->
   	</dependencies>
 </project>
