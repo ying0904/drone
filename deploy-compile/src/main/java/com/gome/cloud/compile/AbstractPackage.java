@@ -21,7 +21,6 @@ public abstract class AbstractPackage implements Package {
 	public final static String BUILD = "build";
 	public final static String TEST = "test";
 	
-	
 	public abstract PackageBean checkOut(PackageBean pb) throws Exception;
 
 	@Override
