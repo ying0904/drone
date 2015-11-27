@@ -15,12 +15,18 @@ public class PackageBean {
 	/** 任务号 */
 	private String taskId;
 	
-	/** 应用名称 */
-	private String appName;
+	/** 项目名*/
+	private String projectName;
+	
+	/** 抽包地址 */
+	private String extractPackagePath;
+	
+//	/** 应用名称 */
+//	private String appName;
 	/** 域名 */
 	private String domain;
-	/** 应用地址 */
-	private String appPath;
+//	/** 应用地址 */
+//	private String appPath;
 	/** 最后一次更新版本 */
 	private String lastVersion;
 	/** 最后一次更新版本 */
@@ -76,21 +82,23 @@ public class PackageBean {
 		this.taskId = taskId;
 	}
 
-	public String getAppName() {
-		return appName;
-	}
+	
+	
+//	public String getAppName() {
+//		return appName;
+//	}
+//
+//	public void setAppName(String appName) {
+//		this.appName = appName;
+//	}
 
-	public void setAppName(String appName) {
-		this.appName = appName;
-	}
-
-	public String getAppPath() {
-		return appPath;
-	}
-
-	public void setAppPath(String appPath) {
-		this.appPath = appPath;
-	}
+//	public String getAppPath() {
+//		return appPath;
+//	}
+//
+//	public void setAppPath(String appPath) {
+//		this.appPath = appPath;
+//	}
 
 	public String getLastVersion() {
 		return lastVersion;
@@ -178,6 +186,22 @@ public class PackageBean {
 
 	public void setPreVersion(String preVersion) {
 		this.preVersion = preVersion;
+	}
+
+	public String getProjectName() {
+		return projectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+
+	public String getExtractPackagePath() {
+		return extractPackagePath;
+	}
+
+	public void setExtractPackagePath(String extractPackagePath) {
+		this.extractPackagePath = extractPackagePath;
 	}
 	
 	

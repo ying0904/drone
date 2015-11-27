@@ -151,10 +151,12 @@ public class GitSource extends AbstractPackage {
 	
 	@Override
 	public PackageBean checkOut(PackageBean pb) throws Exception {
-		pb.setAppName(getPrjectName(pb.getAppPath()));
+		pb.setProjectName(getPrjectName(pb.getExtractPackagePath()));
 		pb.setCheckoutAppName(getPrjectName(pb.getUrl()));
 		pb.setSourcePath(getWorksapce(git + File.separator + pb.getUser() + File.separator + pb.getDomain() + File.separator + pb.getCheckoutAppName()).getAbsolutePath());
-		pb.setTargetPath(pb.getSourcePath() + File.separator + pb.getAppName() + File.separator + "target");
+		pb.setTargetPath(sourceCodeBasePath + File.separator + git + File.separator + pb.getUser() + File.separator + pb.getDomain() + File.separator + exceptPrefix (pb.getExtractPackagePath()) + File.separator + "target");
+		
+		//		pb.setTargetPath(pb.getSourcePath() + File.separator + pb.getAppName() + File.separator + "target");
 //		File workspace = getWorksapce(git + File.separator + pb.getUser());
 //		File file = new File(workspace.getAbsolutePath() + File.separator + pb.getCheckoutAppName() + File.separator + pb.getAppName());
 		pull(pb);
@@ -170,7 +172,7 @@ public class GitSource extends AbstractPackage {
 			pb.setPassword("blaiu123");
 			pb.setTaskId("1001");
 			pb.setDomain("deploy.gome.com.cn");
-			pb.setAppPath("https://github.com/blaiu/deploy/deploy-web");
+			pb.setExtractPackagePath("/deploy/deploy-web");
 			pb.setPreVersion("603bfdb1897cd0102e3c8c1affe9007192dd693f");
 			gitSource.compile(pb);
 //			gitSource.checkOut("https://github.com/blaiu/deploy", "blaiu", "blaiu123", -1);

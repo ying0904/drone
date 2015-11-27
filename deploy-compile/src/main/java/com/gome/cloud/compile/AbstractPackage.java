@@ -12,11 +12,11 @@ import java.io.UnsupportedEncodingException;
 public abstract class AbstractPackage implements Package {
 
 	
-	public String sourceCodeBasePath = "/sourceworksapce";
+	public String sourceCodeBasePath = "/app/worksapce/source";
 	
-	public String compilePath = "/compileworksapce";
+	public String compilePath = "/app/worksapce/compile";
 	
-	public String logPath = "/compilelog";
+	public String logPath = "/app/worksapce/log";
 	
 	public final static String BUILD = "build";
 	public final static String TEST = "test";
@@ -32,6 +32,7 @@ public abstract class AbstractPackage implements Package {
 			pb = checkOut(pb);
 			pb.setCompileBuildPath(createWorksapce(compilePath, pb.getTaskId(), BUILD));
 			pb.setCompileTestPath(createWorksapce(compilePath, pb.getTaskId(), TEST));
+			File targetFile = new File(pb.getTargetPath());
 			if(!isLinux()) {
 				p = Runtime.getRuntime().exec(
 				        "cmd /c cd " + pb.getSourcePath()
@@ -39,13 +40,13 @@ public abstract class AbstractPackage implements Package {
 				        + "&&rd /s /q " + pb.getCompileBuildPath()
 				        + "&&md " + pb.getCompileBuildPath()
 				        + "&&echo copy the file"
-				        + "&&xcopy " + pb.getTargetPath() + " " + pb.getCompileBuildPath() + " /e /y"
+				        + "&&xcopy " + targetFile.getAbsolutePath() + " " + pb.getCompileBuildPath() + " /e /y"
 				        + "&&cd " + pb.getSourcePath()
 				        + "&&call mvn clean -U install " + getProfileId (pb.getTestPid()) + " -Dmaven.test.skip=true"
 				        + "&&rd /s /q " + pb.getCompileTestPath()
 				        + "&&md " + pb.getCompileTestPath()
 				        + "&&echo copy the file"
-				        + "&&xcopy " + pb.getTargetPath() + " " + pb.getCompileTestPath() + " /e /y"
+				        + "&&xcopy " + targetFile.getAbsolutePath() + " " + pb.getCompileTestPath() + " /e /y"
 				        );
 			} else {
 				p = Runtime.getRuntime().exec(  
@@ -123,6 +124,14 @@ public abstract class AbstractPackage implements Package {
 		}
 		return sourcefile2;
 	} 
+	
+	
+	public String exceptPrefix (String value) {
+		 if ("\\/".equals(value.substring(0, 1))) {
+			 return value.substring(1, value.length() - 1);
+		 }
+		 return value;
+	}
 	
 	/**
 	 * 创建工作区

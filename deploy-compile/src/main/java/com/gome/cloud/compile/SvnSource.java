@@ -101,10 +101,10 @@ public class SvnSource extends AbstractPackage {
 		if (null == clientManager) {
 			return pb;
 		}
-		pb.setAppName(getPrjectName(pb.getAppPath()));
+		pb.setProjectName(getPrjectName(pb.getExtractPackagePath()));
 		pb.setCheckoutAppName(getPrjectName(pb.getUrl()));
 		pb.setSourcePath(getWorksapce(SVN + File.separator + pb.getUser() + File.separator + pb.getDomain() + File.separator + pb.getCheckoutAppName()).getAbsolutePath());
-		pb.setTargetPath(pb.getSourcePath() + File.separator + pb.getAppName() + File.separator + "target");
+		pb.setTargetPath(getWorksapce(SVN + File.separator + pb.getUser() + File.separator + pb.getDomain() + File.separator + exceptPrefix (pb.getExtractPackagePath())).getAbsolutePath() + File.separator + "target");
 		
 		SVNURL repositoryURL = SVNURL.parseURIEncoded(pb.getUrl());
 		File ws = new File(pb.getSourcePath());
@@ -158,13 +158,22 @@ public class SvnSource extends AbstractPackage {
 		return file.getAbsolutePath();
 	}
 	
-	public static void main(String[] args) throws IOException {
-//		SvnSource svnSource = new SvnSource();
-//		try {
-//			svnSource.checkOut("http://10.58.44.86/repos/gmfs/branches/gomefile-sdk", "fangbin", "123456", 756);
-//		} catch (SVNException e) {
-//			e.printStackTrace();
-//		}
+	public static void main(String[] args) throws Exception {
+		PackageBean pb = new PackageBean();
+		pb.setUrl("http://10.58.44.86/repos/gmfs/branches/gomefile-sdk");
+		pb.setUser("fangbin");
+		pb.setPassword("123456");
+		pb.setTaskId("1002");
+		pb.setDomain("gfs.gome.com.cn");
+		pb.setExtractPackagePath("/gomefile-sdk");
+		pb.setPreVersion("756");
+		
+		SvnSource svnSource = new SvnSource();
+		try {
+			svnSource.compile(pb);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
