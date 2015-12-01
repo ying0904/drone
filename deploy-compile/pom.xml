@@ -27,37 +27,69 @@
    		<dependency>
      		<groupId>org.eclipse.jgit</groupId>
      		<artifactId>org.eclipse.jgit</artifactId>
-     		<version>4.1.1.201511131810-r</version>
    		</dependency>
 
   		<!-- Smart HTTP Servlet -->
    		<dependency>
      		<groupId>org.eclipse.jgit</groupId>
      		<artifactId>org.eclipse.jgit.http.server</artifactId>
-     		<version>4.1.1.201511131810-r</version>
    		</dependency>
     
     	<dependency>
   			<groupId>org.tmatesoft.svnkit</groupId>
   			<artifactId>svnkit</artifactId>
-  			<version>1.8.11</version>
   		</dependency>
   		<dependency>
   			<groupId>org.tmatesoft.svnkit</groupId>
   			<artifactId>svnkit-cli</artifactId>
-  			<version>1.8.11</version>
   		</dependency>
   		
   		<dependency>
   			<groupId>org.tmatesoft.svnkit</groupId>
   			<artifactId>svnkit-javahl16</artifactId>
-  			<version>1.8.11</version>
   		</dependency>
   		
   		<dependency>
     		<groupId>com.amazonaws</groupId>
     		<artifactId>aws-java-sdk</artifactId>
-    		<version>1.9.39</version>
 		</dependency>
+
+    	<!-- dubbo -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-framework</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+  		
+  		<dependency>
+    		<groupId>gome.cloud</groupId>
+    		<artifactId>deploy-service</artifactId>
+    		<version>0.0.1-SNAPSHOT</version>
+    	</dependency>
+    	
+    	<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+    	
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>log4j</groupId>
+					<artifactId>log4j</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+    	
   	</dependencies>
 </project>

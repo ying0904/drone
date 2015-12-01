@@ -21,12 +21,8 @@ public class PackageBean {
 	/** 抽包地址 */
 	private String extractPackagePath;
 	
-//	/** 应用名称 */
-//	private String appName;
 	/** 域名 */
 	private String domain;
-//	/** 应用地址 */
-//	private String appPath;
 	/** 最后一次更新版本 */
 	private String lastVersion;
 	/** 最后一次更新版本 */
@@ -81,24 +77,6 @@ public class PackageBean {
 	public void setTaskId(String taskId) {
 		this.taskId = taskId;
 	}
-
-	
-	
-//	public String getAppName() {
-//		return appName;
-//	}
-//
-//	public void setAppName(String appName) {
-//		this.appName = appName;
-//	}
-
-//	public String getAppPath() {
-//		return appPath;
-//	}
-//
-//	public void setAppPath(String appPath) {
-//		this.appPath = appPath;
-//	}
 
 	public String getLastVersion() {
 		return lastVersion;
