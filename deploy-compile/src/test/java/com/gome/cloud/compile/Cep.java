@@ -1,4 +1,4 @@
-package com.gome.cloud.compile.ceph;
+package com.gome.cloud.compile;
 
 import java.io.File;
 

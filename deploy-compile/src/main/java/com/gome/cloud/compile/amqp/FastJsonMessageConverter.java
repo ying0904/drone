@@ -5,8 +5,6 @@ package com.gome.cloud.compile.amqp;
 
 import java.io.UnsupportedEncodingException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.support.converter.AbstractMessageConverter;
@@ -20,7 +18,7 @@ import com.alibaba.fastjson.JSON;
  */
 public class FastJsonMessageConverter extends AbstractMessageConverter {
 
-	private static Log log = LogFactory.getLog(FastJsonMessageConverter.class);
+//	private static Log log = LogFactory.getLog(FastJsonMessageConverter.class);
 	 
     public static final String DEFAULT_CHARSET = "UTF-8";
  

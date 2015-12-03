@@ -6,6 +6,13 @@
            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
            default-autowire="byName">
 
+	<bean id="iCeph" class="com.gome.cloud.compile.ceph">
+		<property name="accessKey" value="${ceph.accessKey}"/>
+		<property name="secretKey" value="${ceph.secretKey}"/>
+		<property name="bucketName" value="${ceph.bucketName}"/>
+		<property name="host" value="${ceph.host}"/>
+	</bean>
+
      <bean id="testService" class="com.gome.cloud.service.TestServiceImpl"/>
     
 </beans>

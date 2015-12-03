@@ -20,8 +20,8 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
  */
 public class CephImpl implements ICeph {
 	
-	private String accessKey = "6EXC5VOGU56PGC0JEZM9";
-	private String secretKey = "ShUbCZdApMhGJ9Cpr1wBGBzpIBFhbTJ81kmRu7Dz";
+	private String accessKey;
+	private String secretKey;
 	private String host;
 	private AmazonS3 conn;
 	private String bucketName;
@@ -81,5 +81,23 @@ public class CephImpl implements ICeph {
 		getAmazonS3();
 		conn.getObject(new GetObjectRequest(bucketName, fileName), new File(descDir, fileName));
 	}
+
+	public void setAccessKey(String accessKey) {
+		this.accessKey = accessKey;
+	}
+
+	public void setSecretKey(String secretKey) {
+		this.secretKey = secretKey;
+	}
+
+	public void setHost(String host) {
+		this.host = host;
+	}
+
+	public void setBucketName(String bucketName) {
+		this.bucketName = bucketName;
+	}
+	
+	
 
 }
