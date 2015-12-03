@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="AppSystemMapper">
+
+	<resultMap id="AppSystemMap" type="com.gome.cloud.domain.TbAppSystem">
+		<result column="ID" property="id" jdbcType="INTEGER"/>
+		<result column="SYSTEM_ID" property="systemId" jdbcType="INTEGER"/>
+		<result column="SYSTEM_NAME" property="systemName" jdbcType="VARCHAR"/>
+		<result column="SYSTEM_CHINESE_NAME" property="systemChineseName" jdbcType="VARCHAR"/>
+		<result column="SYSTEM_LEVEL" property="systemLevel" jdbcType="INTEGER"/>
+		<result column="SYSTEM_CHIEF" property="systemChief" jdbcType="VARCHAR"/>
+		<result column="DEPARTMENT" property="department" jdbcType="VARCHAR"/>
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR"/>
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+		<result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR"/>
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+		<result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+		<result column="IS_DEL" property="isDel" jdbcType="INTEGER"/>
+	</resultMap>
+	
+	<insert id="addAppSystem" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
+		insert into tb_application_resources (
+			SYSTEM_ID, SYSTEM_NAME, SYSTEM_CHINESE_NAME, 
+			SYSTEM_LEVEL, SYSTEM_CHIEF, DEPARTMENT, 
+			CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME,
+			REMARK, IS_DEL
+		) values
+		<if test="null != list">
+            <foreach collection="list" index="index" item="item" separator=",">
+        	(
+        	#{item.systemId}, #{item.systemName}, #{item.systemChineseName}, 
+        	#{item.systemLevel}, #{item.systemChief}, #{item.department}, 
+        	#{item.createUser}), now(), #{item.createUser}), now(), 
+        	#{item.remark}, 0
+        	)
+            </foreach>
+        </if>
+<!--         ON DUPLICATE KEY UPDATE id = id -->
+	</insert>
+
+</mapper>

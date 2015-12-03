@@ -52,6 +52,12 @@
   		<dependency>
     		<groupId>com.amazonaws</groupId>
     		<artifactId>aws-java-sdk</artifactId>
+    		<exclusions>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>jackson-annotations</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		
     	<!-- dubbo -->

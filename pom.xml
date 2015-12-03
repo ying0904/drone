@@ -21,14 +21,15 @@
   		<spring_amqp_version>1.5.2.RELEASE</spring_amqp_version>
   		<jstl_version>1.2</jstl_version>
   		<taglibs_standard_version>1.1.2</taglibs_standard_version>
-  		<fastjson_version>1.1.15</fastjson_version>
+  		<fastjson_version>1.2.5</fastjson_version>
+  		<jackson_databind_version>2.5.2</jackson_databind_version>
   		<aspectjweaver_version>1.7.1</aspectjweaver_version>
   		<mybatis_version>3.2.6</mybatis_version>
   		<mybatis_spring_version>1.2.1</mybatis_spring_version>
   		<mysql_version>5.1.25</mysql_version>
   		<druid_version>1.0.13</druid_version>
   		<log4j_version>1.2.17</log4j_version>
-  		<jackson_mapper_asl_version>1.9.4</jackson_mapper_asl_version>
+<!--   		<jackson_mapper_asl_version>1.9.4</jackson_mapper_asl_version> -->
   		<commons_compress_version>1.9</commons_compress_version>
   		<commons_lang3_version>3.4</commons_lang3_version>
   		<commons_collections_version>3.2.1</commons_collections_version>
@@ -37,6 +38,7 @@
   		<dubbo_version>2.5.3</dubbo_version>
   		<zookeeper_version>3.4.6</zookeeper_version>
   		<amazonaws_sdk_version>1.8.9.1</amazonaws_sdk_version>
+  		
   		<maven_compiler_plugin_version>3.1</maven_compiler_plugin_version>
         <java_source_version>1.8</java_source_version>
         <java_target_version>1.8</java_target_version>
@@ -73,6 +75,11 @@
 				<artifactId>fastjson</artifactId>
 				<version>${fastjson_version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson_databind_version}</version>
+			</dependency>
 			
 			<dependency>  
 	   			<groupId>org.aspectj</groupId>
@@ -104,11 +111,11 @@
 	    		<artifactId>log4j</artifactId>
 	    		<version>${log4j_version}</version>
 			</dependency>
-			<dependency>
-	           <groupId>org.codehaus.jackson</groupId>
-	           <artifactId>jackson-mapper-asl</artifactId>
-	           <version>${jackson_mapper_asl_version}</version>
-	     	</dependency>
+<!-- 			<dependency> -->
+<!-- 	           	<groupId>org.codehaus.jackson</groupId> -->
+<!--            		<artifactId>jackson-mapper-asl</artifactId> -->
+<!-- 	           	<version>${jackson_mapper_asl_version}</version> -->
+<!-- 	     	</dependency> -->
 	     	<dependency>
 	            <groupId>org.apache.commons</groupId>
 	            <artifactId>commons-compress</artifactId>
