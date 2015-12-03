@@ -80,7 +80,6 @@ public class CephImpl implements ICeph {
 		}
 		getAmazonS3();
 		conn.getObject(new GetObjectRequest(bucketName, fileName), new File(descDir, fileName));
-		
 	}
 
 }
