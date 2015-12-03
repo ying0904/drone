@@ -53,7 +53,7 @@
     		<groupId>com.amazonaws</groupId>
     		<artifactId>aws-java-sdk</artifactId>
 		</dependency>
-
+		
     	<!-- dubbo -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -61,7 +61,7 @@
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework</groupId>
-					<artifactId>spring-framework</artifactId>
+					<artifactId>spring</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>

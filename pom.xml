@@ -36,8 +36,7 @@
   		<svnkit_version>1.8.11</svnkit_version>
   		<dubbo_version>2.5.3</dubbo_version>
   		<zookeeper_version>3.4.6</zookeeper_version>
-  		<amazonaws_sdk_version>1.9.39</amazonaws_sdk_version>
-  		
+  		<amazonaws_sdk_version>1.8.9.1</amazonaws_sdk_version>
   		<maven_compiler_plugin_version>3.1</maven_compiler_plugin_version>
         <java_source_version>1.8</java_source_version>
         <java_target_version>1.8</java_target_version>
