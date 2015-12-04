@@ -6,6 +6,18 @@
            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
            default-autowire="byName">
 
+	<bean id="svnSource" class="com.gome.cloud.compile.source.SvnSource">
+		<property name="sourcePath" value="${source.path}"/>
+		<property name="compilePath" value="${compile.path}"/>
+		<property name="logPath" value="${log.path}"/>
+	</bean>
+	
+	<bean id="gitSource" class="com.gome.cloud.compile.source.GitSource">
+		<property name="sourcePath" value="${source.path}"/>
+		<property name="compilePath" value="${compile.path}"/>
+		<property name="logPath" value="${log.path}"/>
+	</bean>
+
 	<bean id="iCeph" class="com.gome.cloud.compile.ceph">
 		<property name="accessKey" value="${ceph.accessKey}"/>
 		<property name="secretKey" value="${ceph.secretKey}"/>

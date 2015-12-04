@@ -10,9 +10,8 @@ import java.io.UnsupportedEncodingException;
 
 
 public abstract class AbstractPackage implements Package {
-
 	
-	public String sourceCodeBasePath = "/app/worksapce/source";
+	public String sourcePath = "/app/worksapce/source";
 	
 	public String compilePath = "/app/worksapce/compile";
 	
@@ -113,11 +112,11 @@ public abstract class AbstractPackage implements Package {
 	 * @return
 	 */
 	public File getWorksapce(String path) {
-		File sourceFile = new File(sourceCodeBasePath);
+		File sourceFile = new File(sourcePath);
 		if (!sourceFile.exists()) {
 			sourceFile.mkdirs();
 		}
-		File sourcefile2 = new File(sourceCodeBasePath + File.separator + path);
+		File sourcefile2 = new File(sourcePath + File.separator + path);
 		if (!sourcefile2.exists()) {
 			sourcefile2.mkdirs();
 		}
@@ -193,5 +192,19 @@ public abstract class AbstractPackage implements Package {
 		} 
 		return file.getAbsolutePath();
 	}
+
+	public void setSourcePath(String sourcePath) {
+		this.sourcePath = sourcePath;
+	}
+
+	public void setCompilePath(String compilePath) {
+		this.compilePath = compilePath;
+	}
+
+	public void setLogPath(String logPath) {
+		this.logPath = logPath;
+	}
+	
+	
 	
 }

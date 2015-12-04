@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.gome.cloud.compile;
+package com.gome.cloud.compile.source;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -27,6 +27,9 @@ import org.tmatesoft.svn.core.wc.SVNClientManager;
 import org.tmatesoft.svn.core.wc.SVNRevision;
 import org.tmatesoft.svn.core.wc.SVNUpdateClient;
 import org.tmatesoft.svn.core.wc.SVNWCUtil;
+
+import com.gome.cloud.compile.AbstractPackage;
+import com.gome.cloud.compile.PackageBean;
 
 /**
  * @author blaiu
@@ -158,22 +161,22 @@ public class SvnSource extends AbstractPackage {
 		return file.getAbsolutePath();
 	}
 	
-	public static void main(String[] args) throws Exception {
-		PackageBean pb = new PackageBean();
-		pb.setUrl("http://10.58.44.86/repos/gmfs/branches/gomefile-sdk");
-		pb.setUser("fangbin");
-		pb.setPassword("123456");
-		pb.setTaskId("1002");
-		pb.setDomain("gfs.gome.com.cn");
-		pb.setExtractPackagePath("/gomefile-sdk");
-		pb.setPreVersion("756");
-		
-		SvnSource svnSource = new SvnSource();
-		try {
-			svnSource.compile(pb);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args) throws Exception {
+//		PackageBean pb = new PackageBean();
+//		pb.setUrl("http://10.58.44.86/repos/gmfs/branches/gomefile-sdk");
+//		pb.setUser("fangbin");
+//		pb.setPassword("123456");
+//		pb.setTaskId("1002");
+//		pb.setDomain("gfs.gome.com.cn");
+//		pb.setExtractPackagePath("/gomefile-sdk");
+//		pb.setPreVersion("756");
+//		
+//		SvnSource svnSource = new SvnSource();
+//		try {
+//			svnSource.compile(pb);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 }

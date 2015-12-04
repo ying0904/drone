@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.gome.cloud.compile;
+package com.gome.cloud.compile.source;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -31,6 +31,9 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.eclipse.jgit.treewalk.TreeWalk;
 import org.eclipse.jgit.util.StringUtils;
+
+import com.gome.cloud.compile.AbstractPackage;
+import com.gome.cloud.compile.PackageBean;
 
 
 /**
@@ -154,7 +157,7 @@ public class GitSource extends AbstractPackage {
 		pb.setProjectName(getPrjectName(pb.getExtractPackagePath()));
 		pb.setCheckoutAppName(getPrjectName(pb.getUrl()));
 		pb.setSourcePath(getWorksapce(git + File.separator + pb.getUser() + File.separator + pb.getDomain() + File.separator + pb.getCheckoutAppName()).getAbsolutePath());
-		pb.setTargetPath(sourceCodeBasePath + File.separator + git + File.separator + pb.getUser() + File.separator + pb.getDomain() + File.separator + exceptPrefix (pb.getExtractPackagePath()) + File.separator + "target");
+		pb.setTargetPath(sourcePath + File.separator + git + File.separator + pb.getUser() + File.separator + pb.getDomain() + File.separator + exceptPrefix (pb.getExtractPackagePath()) + File.separator + "target");
 		
 		//		pb.setTargetPath(pb.getSourcePath() + File.separator + pb.getAppName() + File.separator + "target");
 //		File workspace = getWorksapce(git + File.separator + pb.getUser());
@@ -163,23 +166,22 @@ public class GitSource extends AbstractPackage {
 		return pb;
 	}
 
-	public static void main(String[] args) {
-		GitSource gitSource = new GitSource();
-		try {
-			PackageBean pb = new PackageBean();
-			pb.setUrl("https://github.com/blaiu/deploy");
-			pb.setUser("blaiu");
-			pb.setPassword("blaiu123");
-			pb.setTaskId("1001");
-			pb.setDomain("deploy.gome.com.cn");
-			pb.setExtractPackagePath("/deploy/deploy-web");
-			pb.setPreVersion("603bfdb1897cd0102e3c8c1affe9007192dd693f");
-			gitSource.compile(pb);
-//			gitSource.checkOut("https://github.com/blaiu/deploy", "blaiu", "blaiu123", -1);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
+//	public static void main(String[] args) {
+//		GitSource gitSource = new GitSource();
+//		try {
+//			PackageBean pb = new PackageBean();
+//			pb.setUrl("https://github.com/blaiu/deploy");
+//			pb.setUser("blaiu");
+//			pb.setPassword("blaiu123");
+//			pb.setTaskId("1001");
+//			pb.setDomain("deploy.gome.com.cn");
+//			pb.setExtractPackagePath("/deploy/deploy-web");
+//			pb.setPreVersion("603bfdb1897cd0102e3c8c1affe9007192dd693f");
+//			gitSource.compile(pb);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//	}
 	
 }
