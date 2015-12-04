@@ -10,6 +10,8 @@ import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.support.converter.AbstractMessageConverter;
 import org.springframework.amqp.support.converter.MessageConversionException;
 
+import com.alibaba.fastjson.JSON;
+
 
 /**
  * @author blaiu
@@ -37,6 +39,7 @@ public class FastJsonMessageConverter extends AbstractMessageConverter {
         return null;
     }
      
+	@SuppressWarnings("unchecked")
 	public <T> T fromMessage(Message message, T t) {
         String json = "";
         try {
@@ -44,8 +47,8 @@ public class FastJsonMessageConverter extends AbstractMessageConverter {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return null;
-//        return (T) JSON.parseObject(json, t.getClass());
+//        return null;
+        return  (T) JSON.parseObject(json, t.getClass());
 //        return (T) FastJson.fromJson(json, t.getClass());
     }   
      

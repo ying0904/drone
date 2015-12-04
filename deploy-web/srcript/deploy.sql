@@ -52,8 +52,8 @@ drop table if exists TB_TEST_PACKAGE_VERSION;
 /*==============================================================*/
 create table TB_APP_SYSTEM
 (
-   ID                   int(11) not null auto_increment comment '自增ID',
-   SYSTEM_ID            int(11) not null comment '系统ID',
+   ID                   bigint(20) not null auto_increment comment '自增ID',
+   SYSTEM_ID            varchar(64) not null comment '系统ID',
    SYSTEM_NAME          varchar(100) comment '系统名称',
    SYSTEM_CHINESE_NAME  varchar(200) comment '系统中文名',
    SYSTEM_LEVEL         int(4) comment '系统级别',
@@ -74,8 +74,8 @@ alter table TB_APP_SYSTEM comment '应用系统表';
 /*==============================================================*/
 create table TB_APP
 (
-   ID                   int not null auto_increment comment '自增ID',
-   APP_ID            	int(11) not null comment '应用ID',
+   ID                   bigint(20) not null auto_increment comment '自增ID',
+   APP_ID            	varchar(64) not null comment '应用ID',
    SYSTEM_ID            int(11) not null comment '系统ID',
    APP_NAME             varchar(100) comment '应用名称',
    APP_CHINESE_NAME     varchar(200) comment '应用中文名',
@@ -104,8 +104,8 @@ alter table TB_APP comment '应用表';
 /*==============================================================*/
 create table TB_APP_COMMON
 (
-   ID                   int not null auto_increment comment '自增ID',
-   APP_ID               int comment '应用ID',
+   ID                   int(11) not null auto_increment comment '自增ID',
+   APP_ID               varchar(64) not null comment '应用ID',
    `FILE_NAME`          varchar(100) comment '文件名',
    FILE_PATH            varchar(200) comment '文件地址',
    CREATE_TIME          datetime comment '创建时间',
@@ -121,7 +121,7 @@ alter table TB_APP_COMMON comment '应用公用配置';
 create table TB_APP_MEMBER
 (
    ID                   int(11) not null auto_increment comment '自增ID',
-   APP_ID               int(11) comment '应用ID',
+   APP_ID               varchar(64) not null comment '应用ID',
    USER_ID              varchar(30) comment '用户ID',
    primary key (ID)
 );
@@ -133,8 +133,8 @@ alter table TB_APP_MEMBER comment '应用成员表';
 /*==============================================================*/
 create table TB_APP_RESOURCES
 (
-   ID                   int(11) not null auto_increment comment '自增ID',
-   APP_ID               int(11) comment '应用ID',
+   ID                   bigint(11) not null auto_increment comment '自增ID',
+   APP_ID               varchar(64) not null comment '应用ID',
    IP                   varchar(20) comment '机器IP',
    STAUTS               int(4) comment '状态',
    CREATE_TIME          datetime comment '创建时间',
@@ -153,7 +153,7 @@ alter table TB_APP_RESOURCES comment '应用资源表';
 create table TB_APP_SOURCE_CODE
 (
    ID                   int(11) not null auto_increment comment '自增ID',
-   APP_ID               int(11) comment '应用ID',
+   APP_ID               varchar(64) not null comment '应用ID',
    TRUNK                varchar(100) comment '主干地址',
    TRUNK_USER           varchar(30) comment '主干用户名',
    TRUNK_PASSWORD       varchar(128) comment '主干密码',
@@ -180,7 +180,7 @@ alter table TB_APP_SOURCE_CODE comment '应用源码表';
 create table TB_APP_TEST_COMMON
 (
    ID                   int(11) not null auto_increment comment '自增ID',
-   APP_ID               int(11) comment '应用ID',
+   APP_ID               varchar(64) not null comment '应用ID',
    `FILE_NAME`          varchar(100) comment '文件名',
    FILE_PATH            varchar(200) comment '文件地址',
    CREATE_TIME          datetime comment '创建时间',
@@ -196,7 +196,7 @@ alter table TB_APP_TEST_COMMON comment '测试应用公用配置';
 create table TB_APP_TEST_RESOURCES
 (
    ID                   int(11) not null auto_increment comment '自增ID',
-   APP_ID               int(11) comment '应用ID',
+   APP_ID               varchar(64) not null comment comment '应用ID',
    IP                   varchar(20) comment '机器IP',
    STAUTS               int(11) comment '状态 0=停止, 1=运行',
    CREATE_TIME          datetime comment '创建时间',
@@ -214,8 +214,9 @@ alter table TB_APP_TEST_RESOURCES comment '测试应用资源表';
 /*==============================================================*/
 create table TB_COMPILE
 (
-   ID                   int(11) not null auto_increment comment '自增ID',
-   APP_ID               int(11) comment '应用ID',
+   ID                   bigint(20) not null auto_increment comment '自增ID',
+   COMPILE_ID           varchar(64) not null comment '编译ID',
+   APP_ID               varchar(64) not null comment '应用ID',
    TRUNK                varchar(200) comment '抽包地址',
    TEST_TYPE            int(4) comment '测试类型 1=测试 ,2=自测',
    ONLINE_TYPE          int(4) comment '上线类型 1=正常上线 ,2=紧急上线',
@@ -235,8 +236,8 @@ alter table TB_COMPILE comment '编译';
 /*==============================================================*/
 create table TB_COMPILE_CONFIG
 (
-   ID                   int(11) not null auto_increment comment '自增ID',
-   APP_ID               int(11) comment '应用ID',
+   ID                   bigint(20) not null auto_increment comment '自增ID',
+   APP_ID               varchar(64) not null comment '应用ID',
    PROFILE_ID_TEST      varchar(50) comment '测试PROFILEID',
    PROFILE_ID_PRODUCT   varchar(50) comment '生产PROFILEID',
    PROFILE_PATH         varchar(200) comment '文件地址',
@@ -252,9 +253,10 @@ alter table TB_COMPILE_CONFIG comment '编译配置表';
 /*==============================================================*/
 create table TB_COMPILE_PACKAGE
 (
-   ID                   int(11) not null auto_increment comment '自增ID',
-   APP_ID               int(11) comment '应用ID',
-   COMPILE_ID           int(11) comment '测试PROFILEID',
+   ID                   bigint(11) not null auto_increment comment '自增ID',
+   APP_ID               varchar(64) not null comment '应用ID',
+   COMPILE_ID           varchar(64) not null comment '编译ID',
+   PACKAGE_ID           varchar(64) not null comment '编译包ID',
    PACKAGE_NAME         varchar(50) comment '包名称',
    ADDRESS              varchar(200) comment '包存放地址',
    CREATE_TIME          datetime comment '创建时间',
@@ -269,9 +271,9 @@ alter table TB_COMPILE_PACKAGE comment '编译包';
 /*==============================================================*/
 create table TB_DEPLOY_RESOURCES
 (
-   ID                   int(11) not null auto_increment comment '自增ID',
-   APP_ID               int(11) comment '应用ID',
-   TASK_ID              int(11) comment '部署任务ID',
+   ID                   bigint(11) not null auto_increment comment '自增ID',
+   TASK_ID              varchar(64) not null comment '部署任务ID',
+   APP_ID               varchar(64) not null comment '应用ID',
    DEPLOY_IP            varchar(20) comment '部署任务IP',
    IS_DEL               int(4) comment '是否删除',
    primary key (ID)
@@ -284,12 +286,12 @@ alter table TB_DEPLOY_RESOURCES comment '部署资源表';
 /*==============================================================*/
 create table TB_DEPLOY_TASK
 (
-   ID                   int(11) not null auto_increment comment '自增ID',
+   ID                   bigint(11) not null auto_increment comment '自增ID',
+   TASK_ID              varchar(64) not null comment '部署任务ID',
    `TYPE`               int(4) comment '上线类型 1=正常上线 ,2=紧急上线, 3=重启任务, 4=停止任务, 5=回滚任务',
    APPROVAL_USER        varchar(60) comment '审批人',
    APPROVAL_TIME        datetime comment '审批时间',
    TITLE                varchar(200) comment '标题',
-   APP_ID               int(11) comment '应用ID',
    PLAN_DEPLOY_TIME     varchar(20) comment '计划部署时间',
    REMARK               varchar(200) comment '备注',
    VERSION_SRC          int comment '版本来源',
@@ -298,7 +300,8 @@ create table TB_DEPLOY_TASK
    CREATE_TIME          datetime comment '创建时间',
    STATUS               int(4) comment '状态 0=待部署, 1=部署成功',
    FINISH_TIME          datetime comment '完成时间',
-   TASK_ID              int(11) comment '任务包ID',
+   APP_ID               varchar(64) not null comment '应用ID',
+   PACKAGE_ID           varchar(64) not null comment '任务包ID',
    primary key (ID)
 );
 
@@ -330,8 +333,9 @@ alter table TB_DICTIONARY comment '字典表';
 /*==============================================================*/
 create table TB_ONLINE_TASK
 (
-   ID                   int(11) not null auto_increment comment '自增ID',
-   APP_ID               int(11) comment '应用ID',
+   ID                   bigint(11) not null auto_increment comment '自增ID',
+   TASK_ID              varchar(64) not null comment '上线任务ID',
+   APP_ID               varchar(64) not null comment '应用ID',
    TITLE                varchar(200) comment '标题',
    STATUS               int(4) comment '状态',
    `TYPE`               int(4) comment '上线类型',
@@ -351,7 +355,7 @@ alter table TB_ONLINE_TASK comment '上线任务表';
 /*==============================================================*/
 create table TB_ONLINE_TASK_PACKAGE
 (
-   ID                   int(11) not null auto_increment comment '自增ID',
+   ID                   bigint(11) not null auto_increment comment '自增ID',
    TASK_ID              int(11) comment '任务ID',
    COMPILE_ID           int(11) comment '编译ID',
    PACKAGE_NAME         varchar(200) comment '包名称',
@@ -369,7 +373,7 @@ alter table TB_ONLINE_TASK_PACKAGE comment '上线任务挂包表';
 /*==============================================================*/
 create table TB_ONLINE_TASK_RESUME
 (
-   ID                   int(11) not null auto_increment comment '自增ID',
+   ID                   bigint(11) not null auto_increment comment '自增ID',
    TASK_ID              int(11) comment '任务ID',
    STATUS               int(4) comment '状态',
    CREATE_USER          varchar(30) comment '创建人',
@@ -384,7 +388,7 @@ alter table TB_ONLINE_TASK_RESUME comment '上线申请履历表';
 /*==============================================================*/
 create table TB_PACKAGE_VERSION
 (
-   ID                   int(11) not null auto_increment comment '自增ID',
+   ID                   bigint(11) not null auto_increment comment '自增ID',
    APP_ID               int(11) comment '应用ID',
    PACKAGE_VERSION_NO   varchar(200) comment '包版本',
    CREATE_TIME          datetime comment '创建时间',
@@ -399,7 +403,7 @@ alter table TB_PACKAGE_VERSION comment '版本包';
 /*==============================================================*/
 create table TB_TEST_COMPILE_PACKAGE
 (
-   ID                   int(11) not null auto_increment comment '自增ID',
+   ID                   bigint(11) not null auto_increment comment '自增ID',
    APP_ID               int(11) comment '应用ID',
    COMPILE_ID           int(11) comment '测试PROFILEID',
    PACKAGE_NAME         varchar(50) comment '包名称',
@@ -416,7 +420,7 @@ alter table TB_TEST_COMPILE_PACKAGE comment '测试编译包';
 /*==============================================================*/
 create table TB_TEST_DEPLOY_RESOURCES
 (
-   ID                   int(11) not null auto_increment comment '自增ID',
+   ID                   bigint(11) not null auto_increment comment '自增ID',
    APP_ID               int(11) comment '应用ID',
    TASK_ID              int(11) comment '部署任务ID',
    DEPLOY_IP            varchar(20) comment '部署任务IP',
@@ -429,7 +433,7 @@ create table TB_TEST_DEPLOY_RESOURCES
 /*==============================================================*/
 create table TB_TEST_PACKAGE_VERSION
 (
-   ID                   int not null auto_increment comment '自增ID',
+   ID                   bigint not null auto_increment comment '自增ID',
    APP_ID               int(11) comment '应用ID',
    PACKAGE_VERSION_NO   varchar(200) comment '包版本',
    CREATE_TIME          datetime comment '创建时间',
