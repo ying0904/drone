@@ -66,7 +66,7 @@ create table TB_APP
    DEPLOY_TYPE          int(4) comment '应用部署类型',
    DEPLOY_PATH          varchar(200) comment '应用部署路径',
    COMPILE_TYPE         int(4) comment '编译类型',
-   STATUS               int(4) comment '状态',
+   `STATUS`             int(4) comment '状态',
    CREATE_USER          varchar(30) comment '创建人',
    CREATE_TIME          datetime comment '创建时间',
    UPDATE_USER          varchar(30) comment '更新人',
@@ -134,7 +134,7 @@ create table TB_APP_SOURCE
 (
    ID                   int(11) not null auto_increment comment '自增ID',
    APP_ID               varchar(64) comment '应用ID',
-   TYPE                 int comment '类型 (1=SVN, 2=GIT)',
+   `TYPE`               int comment '类型 (1=SVN, 2=GIT)',
    TRUNK                varchar(100) comment 'svn地址',
    TRUNK_USER           varchar(30) comment 'svn用户名',
    TRUNK_PASSWORD       varchar(128) comment 'svn密码',
@@ -216,7 +216,7 @@ create table TB_COMPILE
    TRUNK                varchar(200) comment '抽包地址',
    TEST_TYPE            int(4) comment '测试类型',
    ONLINE_TYPE          int(4) comment '上线类型',
-   STATUS               int(4) comment '状态',
+   `STATUS`             int(4) comment '状态',
    TEST_USER            varchar(30) comment '测试人',
    TEST_EMAIL           varchar(50) comment '测试人EMAIL',
    REMARK               varchar(200) comment '备注',
@@ -282,7 +282,7 @@ alter table TB_DEPLOY_RESOURCES comment '部署资源表';
 create table TB_DEPLOY_TASK
 (
    ID                   int(11) not null auto_increment comment '自增ID',
-   TYPE                 int(4) comment '上线类型',
+   `TYPE`               int(4) comment '上线类型',
    DEPLOY_ID            varchar(64) comment '部署ID',
    TASK_ID              varchar(64) comment '任务包ID',
    APP_ID               varchar(64) comment '应用ID',
@@ -295,7 +295,7 @@ create table TB_DEPLOY_TASK
    VERSION_NO           varchar(50) comment '版本号',
    CREATE_USER          varchar(60) comment '创建人',
    CREATE_TIME          datetime comment '创建时间',
-   STATUS               int(4) comment '状态',
+   `STATUS`               int(4) comment '状态',
    FINISH_TIME          datetime comment '完成时间',
    UUID                 varchar(128) comment 'UUID',
    primary key (ID)
@@ -309,9 +309,9 @@ alter table TB_DEPLOY_TASK comment '部署任务表';
 create table TB_DICTIONARY
 (
    ID                   int(11) not null comment 'ID',
-   TYPE                 int(4) comment '字典类型',
-   NAME					VARCHAR(50) '名称'
-   KEY                  varchar(50) comment '字典KEY',
+   `TYPE`               int(4) comment '字典类型',
+   NAME						varchar(50) comment '名称',
+   `KEY`                varchar(50) comment '字典KEY',
    VALUE                varchar(200) comment '字典VALUE',
    CREATE_USER          varchar(30) comment '创建人',
    CREATE_TIME          datetime comment '创建时间',
@@ -335,8 +335,8 @@ create table TB_ONLINE_TASK
    TASK_ID              varchar(64) comment '上线任务ID',
    APP_ID               varchar(64) comment '应用ID',
    TITLE                varchar(200) comment '标题',
-   STATUS               int(4) comment '状态',
-   TYPE                 int(4) comment '上线类型',
+   `STATUS`             int(4) comment '状态',
+   `TYPE`               int(4) comment '上线类型',
    IS_NEW               int(4) comment '是否新应用',
    DEPLOY_DATE          varchar(20) comment '部署日期',
    DEPLOY_TIME          varchar(20) comment '部署时间',
@@ -358,7 +358,7 @@ create table TB_ONLINE_TASK_PACKAGE
    TASK_ID              varchar(64) comment '任务ID',
    PACKAGE_ID           varchar(64) comment '包ID',
    PACKAGE_NAME         varchar(80) comment '包名',
-   TYPE                 int(4) comment '包类型(1：增量 2：全量)',
+   `TYPE`                 int(4) comment '包类型(1：增量 2：全量)',
    PACKAGE_PATH         varchar(200) comment '包路径',
    CREATE_USER          varchar(30) comment '创建人',
    CREATE_TIME          datetime comment '创建时间',
@@ -375,7 +375,7 @@ create table TB_ONLINE_TASK_RESUME
 (
    ID                   int not null auto_increment comment '自增ID',
    TASK_ID              varchar(64) comment '任务ID',
-   STATUS               int(4) comment '状态',
+   `STATUS`               int(4) comment '状态',
    CREATE_USER          varchar(30) comment '创建人',
    CREATE_TIME          datetime comment '创建时间',
    UUID                 varchar(128) comment 'UUID',
