@@ -39,6 +39,7 @@
   		<zookeeper_version>3.4.6</zookeeper_version>
   		<amazonaws_sdk_version>1.8.9.1</amazonaws_sdk_version>
   		<jersey_version>2.19</jersey_version>
+  		<lombok_version>1.16.2</lombok_version>
   		
   		<maven_compiler_plugin_version>3.1</maven_compiler_plugin_version>
         <java_source_version>1.8</java_source_version>
@@ -187,6 +188,11 @@
 	        	<artifactId>jersey-media-json-jackson</artifactId>
 	        	<version>${jersey_version}</version>
     		</dependency>
+    		<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok_version}</version>
+			</dependency>
   		</dependencies>
   	</dependencyManagement>
   	
