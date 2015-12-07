@@ -295,7 +295,7 @@ create table TB_DEPLOY_TASK
    VERSION_NO           varchar(50) comment '版本号',
    CREATE_USER          varchar(60) comment '创建人',
    CREATE_TIME          datetime comment '创建时间',
-   `STATUS`               int(4) comment '状态',
+   `STATUS`             int(4) comment '状态',
    FINISH_TIME          datetime comment '完成时间',
    UUID                 varchar(128) comment 'UUID',
    primary key (ID)
@@ -308,9 +308,9 @@ alter table TB_DEPLOY_TASK comment '部署任务表';
 /*==============================================================*/
 create table TB_DICTIONARY
 (
-   ID                   int(11) not null comment 'ID',
+   ID                   int(11) not null auto_increment comment 'ID',
    `TYPE`               int(4) comment '字典类型',
-   NAME						varchar(50) comment '名称',
+   NAME					varchar(50) comment '名称',
    `KEY`                varchar(50) comment '字典KEY',
    VALUE                varchar(200) comment '字典VALUE',
    CREATE_USER          varchar(30) comment '创建人',
@@ -358,7 +358,7 @@ create table TB_ONLINE_TASK_PACKAGE
    TASK_ID              varchar(64) comment '任务ID',
    PACKAGE_ID           varchar(64) comment '包ID',
    PACKAGE_NAME         varchar(80) comment '包名',
-   `TYPE`                 int(4) comment '包类型(1：增量 2：全量)',
+   `TYPE`               int(4) comment '包类型(1：增量 2：全量)',
    PACKAGE_PATH         varchar(200) comment '包路径',
    CREATE_USER          varchar(30) comment '创建人',
    CREATE_TIME          datetime comment '创建时间',
@@ -375,7 +375,7 @@ create table TB_ONLINE_TASK_RESUME
 (
    ID                   int not null auto_increment comment '自增ID',
    TASK_ID              varchar(64) comment '任务ID',
-   `STATUS`               int(4) comment '状态',
+   `STATUS`             int(4) comment '状态',
    CREATE_USER          varchar(30) comment '创建人',
    CREATE_TIME          datetime comment '创建时间',
    UUID                 varchar(128) comment 'UUID',
