@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.gome.cloud.domain.TbAppSystem;
+import com.gome.cloud.domain.TbObject;
 import com.gome.cloud.service.AppSystemService;
 import com.gome.cloud.utils.jackson.JacksonUtil;
 
@@ -32,7 +32,7 @@ public class AppSystemController {
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	@ResponseBody
 	public String add(String json) {
-		List<TbAppSystem> list = JacksonUtil.readValue(json, new TypeReference<List<TbAppSystem>>(){});
+		List<TbObject> list = JacksonUtil.readValue(json, new TypeReference<List<TbObject>>(){});
 		list = appSystemService.addAppSystem(list);
 		return JacksonUtil.toJSon(list);
 	}

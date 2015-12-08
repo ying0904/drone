@@ -3,7 +3,7 @@ import java.util.List;
 
 import com.gome.cloud.dao.AppSystemDao;
 import com.gome.cloud.dao.BaseDao;
-import com.gome.cloud.domain.TbAppSystem;
+import com.gome.cloud.domain.TbObject;
 
 
 public class AppSystemDaoImpl extends BaseDao implements AppSystemDao {
@@ -13,7 +13,7 @@ public class AppSystemDaoImpl extends BaseDao implements AppSystemDao {
 	}
 	
 	@Override
-	public List<TbAppSystem> addAppSystem(List<TbAppSystem> list) {
+	public List<TbObject> addAppSystem(List<TbObject> list) {
 		getSqlSession().insert(getNamespace() + "addAppSystem", list);
 		return list;
 	}

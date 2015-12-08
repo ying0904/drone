@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TbObjectMapper">
+
+	<resultMap id="TbDictionaryMap" type="com.gome.cloud.domain.TbDictionary">
+		<result column="ID" property="id" jdbcType="INTEGER"/>
+		<result column="TYPE" property="type" jdbcType="INTEGER"/>
+		<result column="NAME" property="name" jdbcType="VARCHAR"/>
+		<result column="KEY" property="key" jdbcType="VARCHAR"/>
+		<result column="VALUE" property="value" jdbcType="VARCHAR"/>
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR"/>
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+		<result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR"/>
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+		<result column="DESCRIPTION" property="description" jdbcType="VARCHAR"/>
+		<result column="IS_DEL" property="isDel" jdbcType="INTEGER"/>
+	</resultMap>
+	
+	<sql id="DictionaryColumn">
+		ID, TYPE, NAME, KEY, VALUE, 
+		CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME, 
+		DESCRIPTION, IS_DEL
+	</sql>
+	
+	<select id="queryDictionary" resultType="TbDictionaryMap" parameterType="java.util.Map">
+		select
+		 <include refid="DictionaryColumn"/>
+		from 
+			TB_DICTIONARY
+		where 1 = 1 
+			<if test="null != type and '' != type"> TYPE = #{type} </if>
+			<if test="null != name and '' != name"> NAME = #{name} </if>
+			<if test="null != key and '' != key"> KEY = #{key} </if>
+	</select>
+
+</mapper>

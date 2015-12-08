@@ -5,7 +5,7 @@ package com.gome.cloud.service;
 
 import java.util.List;
 
-import com.gome.cloud.domain.TbAppSystem;
+import com.gome.cloud.domain.TbObject;
 
 /**
  * @author blaiu
@@ -13,6 +13,6 @@ import com.gome.cloud.domain.TbAppSystem;
  */
 public interface AppSystemService {
 
-	public List<TbAppSystem> addAppSystem(List<TbAppSystem> list);
+	public List<TbObject> addAppSystem(List<TbObject> list);
 	
 }

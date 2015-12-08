@@ -12,54 +12,49 @@ import lombok.Setter;
  * @author blaiu
  *
  */
-public class TbApp {
+public class TbAppSourceCode {
 
 	@Getter
 	@Setter
 	private Integer id;
 	@Getter
 	@Setter
-	private String projectId;
-	@Getter
-	@Setter
 	private String appId;
 	
 	@Getter
 	@Setter
-	private String appName;
+	private String trunk;
 	@Getter
 	@Setter
-	private String appChineseName;
+	private String trunkUser;
 	@Getter
 	@Setter
-	private Integer appType;
-	@Getter
-	@Setter
-	private Integer appLevel;
-	@Getter
-	@Setter
-	private String appChief;
+	private String trunkPassword;
 	
 	@Getter
 	@Setter
-	private Integer domainType;
+	private String branch;
 	@Getter
 	@Setter
-	private String appDomain;
+	private String branchUser;
+	@Getter
+	@Setter
+	private String branchPassword;
 	
 	@Getter
 	@Setter
-	private Integer deployType;
+	private String trunkLastVersion;
 	@Getter
 	@Setter
-	private String deployPath;
+	private String branchLastVersion;
+	
 	
 	@Getter
 	@Setter
-	private Integer compileType;
+	private String targetPath;
 	@Getter
 	@Setter
-	private Integer status;
+	private String sourceType;
 	
 	@Getter
 	@Setter
@@ -74,9 +69,6 @@ public class TbApp {
 	@Setter
 	private Date updateTime;
 	
-	@Getter
-	@Setter
-	private String remark;
 	@Getter
 	@Setter
 	private Integer isDel;
