@@ -161,22 +161,22 @@ public class SvnSource extends AbstractPackage {
 		return file.getAbsolutePath();
 	}
 	
-//	public static void main(String[] args) throws Exception {
-//		PackageBean pb = new PackageBean();
-//		pb.setUrl("http://10.58.44.86/repos/gmfs/branches/gomefile-sdk");
-//		pb.setUser("fangbin");
-//		pb.setPassword("123456");
-//		pb.setTaskId("1002");
-//		pb.setDomain("gfs.gome.com.cn");
-//		pb.setExtractPackagePath("/gomefile-sdk");
-//		pb.setPreVersion("756");
-//		
-//		SvnSource svnSource = new SvnSource();
-//		try {
-//			svnSource.compile(pb);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+	public static void main(String[] args) throws Exception {
+		PackageBean pb = new PackageBean();
+		pb.setUrl("http://10.58.44.86/repos/gmfs/branches/gomefile-sdk");
+		pb.setUser("fangbin");
+		pb.setPassword("123456");
+		pb.setTaskId("1002");
+		pb.setDomain("gfs.gome.com.cn");
+		pb.setExtractPackagePath("/gomefile-sdk");
+		pb.setPreVersion("756");
+		
+		SvnSource svnSource = new SvnSource();
+		try {
+			svnSource.compile(pb);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

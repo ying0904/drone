@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TbAppTestResourcesMapper">
+
+	<resultMap id="TbAppResourcesMap" type="com.gome.cloud.domain.TbAppResources">
+		<result column="ID" property="id" jdbcType="INTEGER"/>
+		<result column="APP_ID" property="appId" jdbcType="VARCHAR"/>
+		<result column="IP" property="ip" jdbcType="VARCHAR"/>
+		<result column="STAUTS" property="status" jdbcType="INTEGER"/>
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR"/>
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+		<result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR"/>
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+		<result column="IS_DEL" property="isDel" jdbcType="INTEGER"/>
+	</resultMap>
+	
+	<insert id="addAppResources" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
+		insert into TB_APP_TEST_RESOURCES (
+			APP_ID, IP, STAUTS, CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER, 
+		) 
+		values
+		<if test="null != list">
+            <foreach collection="list" index="index" item="item" separator=",">
+        	(
+        	#{item.appId}, #{item.ip}, #{item.status}, 
+        	#{item.createUser}, now(), #{item.createUser}, now(), 0
+        	)
+            </foreach>
+        </if>
+<!--         ON DUPLICATE KEY UPDATE id = id -->
+	</insert>
+	
+	
+
+</mapper>

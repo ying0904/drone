@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TbCompileMapper">
+
+	<resultMap id="TbCompileMap" type="com.gome.cloud.domain.TbCompile">
+		<result column="ID" property="id" jdbcType="INTEGER"/>
+		<result column="APP_ID" property="appId" jdbcType="VARCHAR"/>
+		<result column="TRUNK" property="trunk" jdbcType="VARCHAR"/>
+		<result column="TEST_TYPE" property="testType" jdbcType="INTEGER"/>
+		<result column="ONLINE_TYPE" property="onlineType" jdbcType="INTEGER"/>
+		<result column="STATUS" property="status" jdbcType="INTEGER"/>
+		<result column="TEST_USER" property="testUser" jdbcType="VARCHAR"/>
+		<result column="TEST_EMAIL" property="testEmail" jdbcType="VARCHAR"/>
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR"/>
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+		<result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<insert id="addCompile" useGeneratedKeys="true" keyProperty="id" parameterType="com.gome.cloud.domain.TbCompile">
+		insert into TB_COMPILE (
+			APP_ID, TRUNK, TEST_TYPE, ONLINE_TYPE, STATUS, TEST_USER, TEST_EMAIL
+			CREATE_USER, CREATE_TIME, REMARK
+		) 
+		values
+        (
+        	#{appId}, #{trunk}, #{testType}, #{onlineType}, #{status}, #{testUser}, #{testEmail}, 
+        	#{createUser}, now(), #{remark}
+        )
+<!--         ON DUPLICATE KEY UPDATE id = id -->
+	</insert>
+	
+	
+
+</mapper>

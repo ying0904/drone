@@ -23,6 +23,9 @@ public class TbAppSourceCode {
 	
 	@Getter
 	@Setter
+	private String sourceType;
+	@Getter
+	@Setter
 	private String trunk;
 	@Getter
 	@Setter
@@ -52,9 +55,6 @@ public class TbAppSourceCode {
 	@Getter
 	@Setter
 	private String targetPath;
-	@Getter
-	@Setter
-	private String sourceType;
 	
 	@Getter
 	@Setter

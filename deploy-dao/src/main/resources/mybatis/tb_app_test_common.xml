@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TbAppTestCommonMapper">
+
+	<resultMap id="TbAppCommonMap" type="com.gome.cloud.domain.TbAppCommon">
+		<result column="ID" property="id" jdbcType="INTEGER"/>
+		<result column="APP_ID" property="appId" jdbcType="VARCHAR"/>
+		<result column="FILE_NAME" property="fileName" jdbcType="VARCHAR"/>
+		<result column="FILE_PATH" property="filePath" jdbcType="VARCHAR"/>
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR"/>
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+	</resultMap>
+	
+	<insert id="addAppCommon" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
+		insert into TB_APP_TEST_COMMON (
+			APP_ID, FILE_NAME, FILE_PATH, FILE_PATH, CREATE_USER, CREATE_TIME
+		) 
+		values
+		<if test="null != list">
+            <foreach collection="list" index="index" item="item" separator=",">
+        	(
+        	#{item.appId}, #{item.fileName}, #{item.filePath}, #{item.createUser}, now()
+        	)
+            </foreach>
+        </if>
+<!--         ON DUPLICATE KEY UPDATE id = id -->
+	</insert>
+
+</mapper>

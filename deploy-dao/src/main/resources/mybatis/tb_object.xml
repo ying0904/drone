@@ -4,7 +4,7 @@
 
 	<resultMap id="TbObjectMap" type="com.gome.cloud.domain.TbObject">
 		<result column="ID" property="id" jdbcType="INTEGER"/>
-		<result column="OBJECT_ID" property="projectId" jdbcType="INTEGER"/>
+		<result column="OBJECT_ID" property="projectId" jdbcType="VARCHAR"/>
 		<result column="OBJECT_NAME" property="projectName" jdbcType="VARCHAR"/>
 		<result column="OBJECT_CHINESE_NAME" property="projectChineseName" jdbcType="VARCHAR"/>
 		<result column="OBJECT_LEVEL" property="projectLevel" jdbcType="INTEGER"/>
@@ -20,8 +20,8 @@
 	
 	<insert id="addObject" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
 		insert into TB_OBJECT (
-			SYSTEM_ID, SYSTEM_NAME, SYSTEM_CHINESE_NAME, 
-			SYSTEM_LEVEL, SYSTEM_CHIEF, DEPARTMENT, 
+			OBJECT_ID, OBJECT_NAME, OBJECT_CHINESE_NAME, 
+			OBJECT_LEVEL, OBJECT_CHIEF, DEPARTMENT, 
 			CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME,
 			REMARK, IS_DEL
 		) values
@@ -30,7 +30,7 @@
         	(
         	#{item.projectId}, #{item.projectName}, #{item.projectChineseName}, 
         	#{item.projectLevel}, #{item.projectChief}, #{item.department}, 
-        	#{item.createUser}), now(), #{item.createUser}), now(), 
+        	#{item.createUser}, now(), #{item.createUser}, now(), 
         	#{item.remark}, 0
         	)
             </foreach>

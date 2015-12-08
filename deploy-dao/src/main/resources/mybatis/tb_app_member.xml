@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TbAppMemberMapper">
+
+	<resultMap id="TbAppMemberMap" type="com.gome.cloud.domain.TbAppMember">
+		<result column="ID" property="id" jdbcType="INTEGER"/>
+		<result column="APP_ID" property="appId" jdbcType="VARCHAR"/>
+		<result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<insert id="addAppMember" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
+		insert into TB_APP_MEMBER (
+			APP_ID, USER_ID
+		) 
+		values
+		<if test="null != list">
+            <foreach collection="list" index="index" item="item" separator=",">
+        	(
+        	#{item.appId}, #{item.userId}
+        	)
+            </foreach>
+        </if>
+<!--         ON DUPLICATE KEY UPDATE id = id -->
+	</insert>
+	
+	
+
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TbAppSourceCodeMapper">
+
+	<resultMap id="TbAppSourceCodeMap" type="com.gome.cloud.domain.TbAppSourceCode">
+		<result column="ID" property="id" jdbcType="INTEGER"/>
+		<result column="APP_ID" property="appId" jdbcType="VARCHAR"/>
+		<result column="SOURCE_TYPE" property="sourceType" jdbcType="INTEGER"/>
+		<result column="TRUNK" property="trunk" jdbcType="VARCHAR"/>
+		<result column="TRUNK_USER" property="trunkUser" jdbcType="VARCHAR"/>
+		<result column="TRUNK_PASSWORD" property="trunkPassword" jdbcType="VARCHAR"/>
+		<result column="BRANCH" property="branch" jdbcType="VARCHAR"/>
+		<result column="BRANCH_USER" property="branchUser" jdbcType="VARCHAR"/>
+		<result column="BRANCH_PASSWORD" property="branchPassword" jdbcType="VARCHAR"/>
+		<result column="TRUNK_LAST_VERSION" property="trunkLastVersion" jdbcType="VARCHAR"/>
+		<result column="BRANCH_LAST_VERSION" property="branchLastVersion" jdbcType="VARCHAR"/>
+		<result column="TARGET_PATH" property="targetPath" jdbcType="VARCHAR"/>
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR"/>
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+		<result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR"/>
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+		<result column="IS_DEL" property="isDel" jdbcType="INTEGER"/>
+	</resultMap>
+	
+	<insert id="addAppSourceCode" useGeneratedKeys="true" keyProperty="id" parameterType="com.gome.cloud.domain.TbAppSourceCode">
+		insert into TB_APP_SOURCE_CODE (
+			APP_ID, SOURCE_TYPE, TRUNK, TRUNK_USER, TRUNK_PASSWORD, BRANCH, BRANCH_USER, BRANCH_PASSWORD, 
+			TRUNK_LAST_VERSION, BRANCH_LAST_VERSION, TARGET_PATH, 
+			CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER, IS_DEL, UUID
+		) 
+		values
+        (
+        	#{appId}, #{sourceType}, #{trunk}, #{trunkUser}, #{trunkPassword}, #{branch}, #{branchUser}, #{branchPassword}, 
+        	#{trunkLastVersion}, #{branchLastVersion}, #{targetPath}, 
+        	#{createUser}, now(), #{createUser}, now(), 0
+        )
+	</insert>
+	
+	
+
+</mapper>

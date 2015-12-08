@@ -130,11 +130,11 @@ alter table TB_APP_RESOURCES comment '应用资源表';
 /*==============================================================*/
 /* Table: TB_APP_SOURCE                                         */
 /*==============================================================*/
-create table TB_APP_SOURCE
+create table TB_APP_SOURCE_CODE
 (
    ID                   int(11) not null auto_increment comment '自增ID',
    APP_ID               varchar(64) comment '应用ID',
-   `TYPE`               int comment '类型 (1=SVN, 2=GIT)',
+   SOURCE_TYPE          int(4) comment '类型 (1=SVN, 2=GIT)',
    TRUNK                varchar(100) comment 'svn地址',
    TRUNK_USER           varchar(30) comment 'svn用户名',
    TRUNK_PASSWORD       varchar(128) comment 'svn密码',
@@ -153,7 +153,7 @@ create table TB_APP_SOURCE
    primary key (ID)
 );
 
-alter table TB_APP_SOURCE comment '应用源码表';
+alter table TB_APP_SOURCE_CODE comment '应用源码表';
 
 /*==============================================================*/
 /* Table: TB_APP_TEST_COMMON                                    */

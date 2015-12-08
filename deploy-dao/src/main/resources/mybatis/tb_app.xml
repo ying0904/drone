@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TbObjectMapper">
+
+	<resultMap id="TbAppMap" type="com.gome.cloud.domain.TbApp">
+		<result column="ID" property="id" jdbcType="INTEGER"/>
+		<result column="OBJECT_ID" property="projectId" jdbcType="VARCHAR"/>
+		<result column="APP_ID" property="appId" jdbcType="VARCHAR"/>
+		<result column="APP_NAME" property="appName" jdbcType="VARCHAR"/>
+		<result column="APP_CHINESE_NAME" property="appChineseName" jdbcType="VARCHAR"/>
+		<result column="APP_TYPE" property="appType" jdbcType="INTEGER"/>
+		<result column="APP_LEVEL" property="appLevel" jdbcType="INTEGER"/>
+		<result column="APP_CHIEF" property="appChief" jdbcType="VARCHAR"/>
+		<result column="DOMAIN_TYPE" property="domainType" jdbcType="INTEGER"/>
+		<result column="APP_DOMAIN" property="appDomain" jdbcType="VARCHAR"/>
+		<result column="DEPLOY_TYPE" property="deployType" jdbcType="INTEGER"/>
+		<result column="DEPLOY_PATH" property="deployPath" jdbcType="VARCHAR"/>
+		<result column="COMPILE_TYPE" property="compileType" jdbcType="INTEGER"/>
+		<result column="STATUS" property="status" jdbcType="VARCHAR"/>
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR"/>
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+		<result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR"/>
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+		<result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+		<result column="IS_DEL" property="isDel" jdbcType="INTEGER"/>
+	</resultMap>
+	
+	<insert id="addApp" useGeneratedKeys="true" keyProperty="id" parameterType="com.gome.cloud.domain.TbApp">
+		insert into TB_APP 
+		(
+			OBJECT_ID, APP_ID, APP_NAME, APP_CHINESE_NAME, 
+			APP_TYPE, APP_LEVEL, APP_CHIEF, DOMAIN_TYPE, APP_DOMAIN, 
+			DEPLOY_TYPE, DEPLOY_PATH, COMPILE_TYPE, STATUS, 
+			CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME,
+			REMARK, IS_DEL, UUID
+		) 
+		values
+        (
+        	#{projectId}, #{appId}, #{appName}, #{appChineseName},
+        	#{appType}, #{appLevel}, #{appChief}, #{domainType}, #{appDomain}, 
+        	#{deployType}, #{deployPath}, #{compileType}, #{status}, 
+        	#{createUser}, now(), #{createUser}, now(), 
+        	#{remark}, 0
+        )
+	</insert>
+
+</mapper>

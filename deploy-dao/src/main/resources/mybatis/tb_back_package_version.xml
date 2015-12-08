@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TbBackPackageVersionMapper">
+
+	<resultMap id="TbBackPackageVersionMap" type="com.gome.cloud.domain.TbBackPackageVersion">
+		<result column="ID" property="id" jdbcType="INTEGER"/>
+		<result column="APP_ID" property="appId" jdbcType="VARCHAR"/>
+		<result column="PACKAGE_VERSION_NO" property="packageVersionNo" jdbcType="VARCHAR"/>
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR"/>
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+		<result column="UUID" property="UUID" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<insert id="addBackPackageVersion" useGeneratedKeys="true" keyProperty="id" parameterType="com.gome.cloud.domain.TbBackPackageVersion">
+		insert into TB_BACK_PACKAGE_VERSION (
+			APP_ID, PACKAGE_VERSION_NO, CREATE_USER, CREATE_TIME, UUID
+		) 
+		values
+        (
+        	#{appId}, #{packageVersionNo}, #{createUser}, now(), #{UUID}
+        )
+<!--         ON DUPLICATE KEY UPDATE id = id -->
+	</insert>
+	
+	
+
+</mapper>
